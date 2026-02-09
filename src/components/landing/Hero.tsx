@@ -1,25 +1,39 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Play, ChevronRight, TrendingUp, ShieldCheck } from "lucide-react";
+import Aurora from './Aurora';
 
 const Hero: React.FC = () => {
   return (
     <section className="relative w-full min-h-screen overflow-hidden text-white selection:bg-blue-500/30">
       
-      {/* --- CIRCULAR GRADIENT BACKGROUND --- */}
+      {/* --- CIRCULAR GRADIENT BACKGROUND (commented out) --- */}
+      
       <svg className="absolute z-0 w-full -mt-40 md:mt-0" width="1440" height="676" viewBox="0 0 1440 676" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="-92" y="-948" width="1624" height="1624" rx="812" fill="url(#circleGradient)" />
+        <rect x="-92" y="-948" width="1624" height="1624" rx="812" fill="url(#circleGradient)" fillOpacity="0.45" />
         <defs>
           <radialGradient id="circleGradient" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="rotate(90 428 292)scale(812)">
             <stop offset=".63" stopColor="#372AAC" stopOpacity="0" />
-            <stop offset="1" stopColor="#372AAC" />
+            <stop offset="0.9" stopColor="#372AAC" stopOpacity="0.25" />
+            <stop offset="1" stopColor="#372AAC" stopOpacity="0.45" />
           </radialGradient>
         </defs>
       </svg>
+      
+
+      {/* Aurora background component (replaces SVG) - wrapped to control vertical size */}
+      <div className="absolute inset-x-0 -top-56 h-[50vh] z-0 pointer-events-none">
+        <Aurora
+          colorStops={["#020617","#3b82f6","#06b6d4"]}
+          blend={0.5}
+          amplitude={1.0}
+          speed={1}
+        />
+      </div>
 
 
       {/* --- MAIN CONTENT --- */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20 flex flex-col items-center text-center">
+      <div className="relative z-20 max-w-7xl mx-auto px-6 pt-40 pb-32 flex flex-col items-center text-center">
         
         {/* Badge / Announcement Pill */}
         <motion.div 
