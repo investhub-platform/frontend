@@ -47,14 +47,31 @@ export default function HowItWorks() {
         </div>
 
         <div className="relative">
-          {/* S-curve dashed path */}
+          {/* S-curve dashed path - animated */}
           <svg viewBox="0 0 1000 220" className="w-full h-56" preserveAspectRatio="none">
-            <path d="M20 180 C200 180 300 20 500 20 C700 20 800 180 980 180" stroke="#3b82f6" strokeWidth="2" strokeDasharray="6 8" fill="none" strokeLinecap="round" opacity="0.35" />
+            <motion.path
+              d="M20 180 C200 180 300 20 500 20 C700 20 800 180 980 180"
+              stroke="#3b82f6"
+              strokeWidth="2"
+              strokeDasharray="6 8"
+              fill="none"
+              strokeLinecap="round"
+              opacity="0.35"
+              animate={{ strokeDashoffset: [0, -48] }}
+              transition={{ repeat: Infinity, duration: 4, ease: 'linear' }}
+            />
 
             {steps.map((s, i) => {
               const pos = 120 + (i * 240)
               return (
-                <g key={s.title} transform={`translate(${pos}, ${60 + (i % 2 === 0 ? -6 : 18)})`}>
+                <motion.g
+                  key={s.title}
+                  transform={`translate(${pos}, ${60 + (i % 2 === 0 ? -6 : 18)})`}
+                  initial={{ opacity: 0, y: 12, scale: 0.98 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, amount: 0.6 }}
+                  transition={{ duration: 0.45, delay: i * 0.08 }}
+                >
                   <rect x="-80" y="-34" width="180" height="72" rx="12" fill="#071022" stroke="#ffffff" strokeOpacity="0.06" />
                   <foreignObject x="-76" y="-30" width="172" height="64">
                     <div xmlns="http://www.w3.org/1999/xhtml" className="p-3 text-sm text-slate-300">
@@ -62,7 +79,7 @@ export default function HowItWorks() {
                       <div className="text-slate-400 text-xs mt-1">{s.desc}</div>
                     </div>
                   </foreignObject>
-                </g>
+                </motion.g>
               )
             })}
           </svg>
