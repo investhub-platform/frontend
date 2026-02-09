@@ -6,8 +6,9 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#020617]">
       <Navbar />
-      <main className="pt-32 px-6 pb-12 max-w-6xl mx-auto">
-        <Hero />
+      <Hero />
+
+      <main className="pt-12 px-6 pb-12 max-w-6xl mx-auto">
         
       </main>
     </div>

@@ -4,37 +4,18 @@ import { ArrowRight, Play, ChevronRight, TrendingUp, ShieldCheck } from "lucide-
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative w-full min-h-screen overflow-hidden bg-[#020617] text-white selection:bg-blue-500/30">
+    <section className="relative w-full min-h-screen overflow-hidden text-white selection:bg-blue-500/30">
       
-      {/* --- BACKGROUND LAYERS --- */}
-      
-      {/* 1. Grid Pattern Overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-      
-      {/* 2. Aurora Gradients (Animated) */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div 
-          animate={{ 
-            scale: [1, 1.1, 1], 
-            rotate: [0, 10, -10, 0], 
-            opacity: [0.3, 0.5, 0.3] 
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-[20%] -left-[10%] w-[70vw] h-[70vw] bg-blue-600/20 blur-[120px] rounded-full mix-blend-screen"
-        />
-        <motion.div 
-          animate={{ 
-            scale: [1, 1.2, 1], 
-            x: [0, 50, -50, 0],
-            opacity: [0.2, 0.4, 0.2]
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[10%] right-[0%] w-[60vw] h-[60vw] bg-indigo-600/20 blur-[120px] rounded-full mix-blend-screen"
-        />
-      </div>
-
-      {/* 3. Vignette mask to fade edges to black */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#020617]/50 to-[#020617]" />
+      {/* --- CIRCULAR GRADIENT BACKGROUND --- */}
+      <svg className="absolute z-0 w-full -mt-40 md:mt-0" width="1440" height="676" viewBox="0 0 1440 676" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="-92" y="-948" width="1624" height="1624" rx="812" fill="url(#circleGradient)" />
+        <defs>
+          <radialGradient id="circleGradient" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="rotate(90 428 292)scale(812)">
+            <stop offset=".63" stopColor="#372AAC" stopOpacity="0" />
+            <stop offset="1" stopColor="#372AAC" />
+          </radialGradient>
+        </defs>
+      </svg>
 
 
       {/* --- MAIN CONTENT --- */}
@@ -47,7 +28,7 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="mb-8"
         >
-          <a href="#" className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-300 text-sm font-medium hover:bg-blue-500/20 transition-colors">
+          <a href="#" className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-300 text-sm font-medium hover:bg-blue-500/20 transition-colors transform-none">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
