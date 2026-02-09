@@ -57,3 +57,13 @@
 
 /* subtle text coloring */
 .muted { color: var(--text-muted); }
+
+/* Marquee animation for social proof logos */
+@keyframes marquee {
+	0% { transform: translateX(0); }
+	100% { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.marquee { animation: none !important; }
+}
